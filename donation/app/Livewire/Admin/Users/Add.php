@@ -6,6 +6,7 @@ use App\Models\Plan;
 use App\Models\PlanUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -37,6 +38,7 @@ class Add extends Component
             'password' => Hash::make($this->password),
             'role'     => $this->role,
         ]);
+        Log::info($user);
 
         // Attach plan with extra pivot data
         if ($this->plan_id) {
