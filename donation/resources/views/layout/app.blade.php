@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $title ?? 'My App' }}</title>
+    <title>{{ $title ?? 'Bajm Haidri' }}</title>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     @livewireStyles
