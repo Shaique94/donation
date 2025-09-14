@@ -38,6 +38,8 @@ class Create extends Component
         
         // Optionally reset form after saving
         $this->reset(['plan_name', 'description', 'price', 'duration']);
+
+        return redirect()->route('admin.plan.index');
     }
     
     
