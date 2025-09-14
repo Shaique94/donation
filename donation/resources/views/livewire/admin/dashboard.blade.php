@@ -5,8 +5,10 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                     <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                        <h3 class="font-semibold text-blue-900 mb-2">Card 1</h3>
-                        <p class="text-blue-700">Sample content for demonstration</p>
+                        <h3 class="font-semibold text-blue-900 mb-2">Add User</h3>
+                        <a href="">
+                            Add User
+                        </a>
                     </div>
                     <div class="bg-green-50 p-4 rounded-lg border border-green-200">
                         <h3 class="font-semibold text-green-900 mb-2">Card 2</h3>
