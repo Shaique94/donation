@@ -59,19 +59,10 @@
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 18 18">
                         <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
                     </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Kanban</span>
-                    <span class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full">Pro</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Members</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
-                    </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>
-                    <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">3</span>
-                </a>
-            </li>
+           
             <li>
                 <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 18">
@@ -85,17 +76,10 @@
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 18 20">
                         <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
                     </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Products</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Plans</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="none" viewBox="0 0 18 16">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
-                    </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Sign In</span>
-                </a>
-            </li>
+           
             <li>
                 <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20">
@@ -112,39 +96,8 @@
 
 <!-- Main content -->
 <main class="pt-16 lg:pl-64">
-    <div class="p-6">
-        <div class="bg-white rounded-lg shadow p-6">
-            <h1 class="text-2xl font-bold text-gray-800 mb-4">Dashboard</h1>
-            <p class="text-gray-600 mb-4">This is your main content area. The sidebar is always visible on desktop (lg screens and above) and hidden on mobile/tablet devices.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                    <h3 class="font-semibold text-blue-900 mb-2">Card 1</h3>
-                    <p class="text-blue-700">Sample content for demonstration</p>
-                </div>
-                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                    <h3 class="font-semibold text-green-900 mb-2">Card 2</h3>
-                    <p class="text-green-700">Sample content for demonstration</p>
-                </div>
-                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                    <h3 class="font-semibold text-purple-900 mb-2">Card 3</h3>
-                    <p class="text-purple-700">Sample content for demonstration</p>
-                </div>
-            </div>
-            
-            <div class="mt-8">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Responsive Behavior</h2>
-                <ul class="text-gray-600 space-y-2">
-                    <li>• <strong>Desktop (lg+):</strong> Sidebar is always visible and fixed</li>
-                    <li>• <strong>Mobile/Tablet:</strong> Sidebar is hidden by default, can be toggled with the menu button</li>
-                    <li>• <strong>Header:</strong> Adjusts padding based on screen size to accommodate the sidebar</li>
-                    <li>• <strong>Main content:</strong> Automatically adjusts margin to account for the sidebar</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    {{ $slot }}
 </main>
-
 <script>
     // Mobile menu functionality
     const mobileMenuButton = document.getElementById('mobile-menu-button');
