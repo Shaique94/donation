@@ -5,7 +5,7 @@
         </div>
     @endif
 
-    <form wire:submit.prevent="createUser" class="space-y-6">
+    <form wire:submit.prevent="updateUser" class="space-y-6">
 
         <!-- Name -->
         <div>
