@@ -43,17 +43,22 @@ class Add extends Component
         // Attach plan with extra pivot data
         if ($this->plan_id) {
             $plan = Plan::find($this->plan_id);
-
-            
-            $planUser = PlanUser::create([
-                'user_id'        => $user->id,
-                'plan_id'        => $this->plan_id,
+            $user->plans()->attach($this->plan_id, [
                 'start_date'     => now(),
-                // 'end_date'       => now()->addDays(30),
                 'total_required' => $plan->amount_required ?? 0,
                 'amount_paid'    => 0,
-                'status'         => 'active',   
+                'status'         => 'active',
             ]);
+            
+            // $planUser = PlanUser::create([
+            //     'user_id'        => $user->id,
+            //     'plan_id'        => $this->plan_id,
+            //     'start_date'     => now(),
+            //     // 'end_date'       => now()->addDays(30),
+            //     'total_required' => $plan->amount_required ?? 0,
+            //     'amount_paid'    => 0,
+            //     'status'         => 'active',   
+            // ]);
         }
 
 
