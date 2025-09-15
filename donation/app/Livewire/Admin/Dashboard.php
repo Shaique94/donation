@@ -37,6 +37,10 @@ class Dashboard extends Component
     public $totalExpenses;
     public $netBalance;
 
+    public $outstandingPayments;
+    public $currentMonthTransactions;
+    public $monthlyPaymentStatuses = [];
+    
     public function mount()
     {
         $this->loadDashboardData();
@@ -44,16 +48,26 @@ class Dashboard extends Component
 
     public function loadDashboardData()
     {
-        $this->users = User::with(['plans'])->get();
+        // Load users with their plans and plan_user relationship
+        // We're explicitly specifying that we need pivot data to avoid any issues
+        $this->users = User::with([
+            'plans' => function($query) {
+                $query->withPivot(['start_date', 'end_date', 'total_required', 'amount_paid', 'amount_remaining', 'status']);
+            },
+            'donations' => function($query) {
+                $query->whereMonth('donation_date', Carbon::now()->month)
+                      ->whereYear('donation_date', Carbon::now()->year);
+            }
+        ])->get();
+        
         $this->plans = Plan::all();
 
-        $this->totalUsers   = $this->users->count();
-        $this->activePlans  = DB::table('plan_users')->where('status', 'active')->count();
+        $this->totalUsers = $this->users->count();
+        $this->activePlans = DB::table('plan_users')->where('status', 'active')->count();
         $this->expiredPlans = DB::table('plan_users')->where('status', 'expired')->count();
-        $this->revenue      = DB::table('plan_users')->sum('amount_paid');
+        $this->revenue = DB::table('plan_users')->sum('amount_paid');
         
         // Calculate donation metrics
-        // Assuming Donation model exists or will be created
         $this->totalDonations = DB::table('donations')->sum('amount');
         $this->recentDonations = DB::table('donations')
             ->join('users', 'donations.user_id', '=', 'users.id')
@@ -63,7 +77,6 @@ class Dashboard extends Component
             ->get();
             
         // Calculate expense metrics
-        // Assuming Expense model exists or will be created
         $this->totalExpenses = DB::table('expenses')->sum('amount');
         $this->recentExpenses = DB::table('expenses')
             ->orderBy('created_at', 'desc')
@@ -72,6 +85,38 @@ class Dashboard extends Component
             
         // Calculate net balance (donations - expenses)
         $this->netBalance = $this->totalDonations - $this->totalExpenses;
+        
+        // Calculate outstanding payments
+        $this->outstandingPayments = DB::table('plan_users')
+            ->where('status', 'active')
+            ->sum('amount_remaining');
+            
+        // Get current month's transactions
+        $now = Carbon::now();
+        $this->currentMonthTransactions = Donation::whereMonth('donation_date', $now->month)
+            ->whereYear('donation_date', $now->year)
+            ->with(['user', 'plan'])
+            ->orderBy('donation_date', 'desc')
+            ->get();
+            
+        // Calculate monthly payment status for each active plan user
+        $planUsers = \App\Models\PlanUser::with(['user', 'plan'])
+            ->where('status', 'active')
+            ->get();
+            
+        foreach ($planUsers as $planUser) {
+            if ($planUser->user && $planUser->plan) {
+                $this->monthlyPaymentStatuses[$planUser->user_id] = [
+                    'user_name' => $planUser->user->name,
+                    'plan_name' => $planUser->plan->name,
+                    'monthly_payment' => $planUser->monthly_payment,
+                    'current_month_payment' => $planUser->current_month_payment,
+                    'outstanding_amount' => $planUser->outstanding_amount,
+                    'payment_progress' => $planUser->payment_progress,
+                    'status' => $planUser->monthly_payment_status
+                ];
+            }
+        }
     }
 
    
@@ -82,9 +127,8 @@ class Dashboard extends Component
         $this->userId = $user->id;
         $this->name   = $user->name;
         $this->email  = $user->email;
-        $this->role   = $user->role;
-        $this->plan_id = $user->plans->first()?->id ?? null;
-
+        $this->role   = $user->role ?? 'user';
+        $this->plan_id = $user->plans && $user->plans->isNotEmpty() ? $user->plans->first()?->id : null;
     }
 
     

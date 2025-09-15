@@ -55,10 +55,46 @@ class Reports extends Component
             ->get()
             ->pluck('total', 'category');
 
-        // Plan Distribution
+        // Plan Distribution with payment progress and outstanding amounts
         $this->planDistribution = Plan::withCount('users')
             ->withSum('donations', 'amount')
-            ->get();
+            ->get()
+            ->map(function($plan) {
+            // Calculate total required, paid amount, and outstanding for each plan
+            $planUsers = \App\Models\PlanUser::where('plan_id', $plan->id)
+                ->where('status', 'active')
+                ->get();
+                
+            $totalRequired = $planUsers->sum('total_required');
+            $paidAmount = $planUsers->sum('amount_paid');
+            $outstandingAmount = $planUsers->sum('amount_remaining');
+            
+            // Calculate payment progress percentage
+            $paymentProgress = $totalRequired > 0 ? min(100, round(($paidAmount / $totalRequired) * 100)) : 0;
+            
+            // Calculate this month's metrics
+            $now = \Carbon\Carbon::now();
+            $thisMonthDonations = Donation::where('plan_id', $plan->id)
+                ->whereYear('donation_date', $now->year)
+                ->whereMonth('donation_date', $now->month)
+                ->sum('amount');
+            
+            // Calculate expected monthly payment (total required / 12 months)
+            $expectedMonthlyPayment = $totalRequired / 12;
+            $thisMonthProgress = $expectedMonthlyPayment > 0 
+                ? min(100, round(($thisMonthDonations / $expectedMonthlyPayment) * 100))
+                : 0;
+            
+            // Add the computed values to the plan object
+            $plan->total_required = $totalRequired;
+            $plan->paid_amount = $paidAmount;
+            $plan->outstanding_amount = $outstandingAmount;
+            $plan->payment_progress = $paymentProgress;
+            $plan->this_month_amount = $thisMonthDonations;
+            $plan->this_month_progress = $thisMonthProgress;
+            
+            return $plan;
+        });
 
         // Member Statistics
         $this->totalMembers = User::where('role', 'user')->count();
@@ -67,10 +103,13 @@ class Reports extends Component
         $totalPlanUsers = $this->activePlans + $this->expiredPlans;
         $this->renewalRate = $totalPlanUsers > 0 ? round(($this->activePlans / $totalPlanUsers) * 100) : 0;
 
-        // Top Contributors
+        // Top Contributors with plan payment progress
         $this->topContributors = User::withSum('donations', 'amount')
+            ->with(['plans' => function($query) {
+                $query->withPivot(['total_required', 'amount_paid', 'amount_remaining', 'status', 'start_date', 'end_date']);
+            }])
             ->orderBy('donations_sum_amount', 'desc')
-            ->limit(3)
+            ->limit(5)
             ->get();
 
         // Recent Transactions

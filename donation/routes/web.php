@@ -27,6 +27,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/create/plans',Create::class)->name('admin.plan.create');
     Route::get('/admin/plans',Index::class)->name('admin.plan.index');
     Route::get('/admin/edit/plan/{planId}',Edit::class)->name('admin.plan.edit');
+    Route::get('/admin/plan/{planId}/user/{userId}/payments', \App\Livewire\Admin\Plan\Payments::class)->name('admin.plan.payments');
 
     // User routes
     Route::get('/admin/add-user', Add::class)->name('admin.users.add');

@@ -21,7 +21,24 @@ class Index extends Component
     
     public function loadPlans()
     {
-        $this->plans = Plan::orderBy('amount')->get();
+        $plans = Plan::with('planUsers')
+            ->withCount('users')
+            ->orderBy('amount')
+            ->get();
+            
+        foreach($plans as $plan) {
+            // Calculate payment progress metrics
+            $totalRequired = $plan->planUsers->sum('total_required');
+            $totalPaid = $plan->planUsers->sum('amount_paid');
+            $totalOutstanding = $plan->planUsers->sum('amount_remaining');
+            
+            $plan->total_required = $totalRequired;
+            $plan->total_paid = $totalPaid;
+            $plan->total_outstanding = $totalOutstanding;
+            $plan->payment_progress = $totalRequired > 0 ? min(100, round(($totalPaid / $totalRequired) * 100)) : 0;
+        }
+        
+        $this->plans = $plans;
     }
     
     public function togglePlanStatus($planId)

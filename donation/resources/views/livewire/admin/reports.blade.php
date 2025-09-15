@@ -123,7 +123,7 @@
     <!-- Plan Distribution & Member Stats -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 col-span-2">
-            <h2 class="text-lg font-semibold mb-6">Plan Distribution</h2>
+            <h2 class="text-lg font-semibold mb-6">Plan Distribution & Payment Progress</h2>
             @if($planDistribution && $planDistribution->count())
                 <div class="space-y-4">
                     @foreach($planDistribution as $plan)
@@ -133,19 +133,50 @@
                                     <div class="font-semibold text-gray-800">{{ $plan->name }}</div>
                                     <div class="text-sm text-gray-500">₹{{ number_format($plan->amount ?? 0, 2) }} • {{ $plan->users_count ?? 0 }} members</div>
                                 </div>
-                                <div class="text-lg font-bold text-blue-600">₹{{ number_format($plan->donations_sum_amount ?? 0, 2) }}</div>
+                                <div class="text-right">
+                                    <div class="text-lg font-bold text-blue-600">₹{{ number_format($plan->paid_amount ?? 0, 2) }}</div>
+                                    <div class="text-xs text-amber-600 font-medium">₹{{ number_format($plan->outstanding_amount ?? 0, 2) }} outstanding</div>
+                                </div>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                @php
-                                    $percentage = $planDistribution->sum('donations_sum_amount') > 0 
-                                        ? ($plan->donations_sum_amount / $planDistribution->sum('donations_sum_amount')) * 100 
-                                        : 0;
-                                @endphp
-                                <div class="bg-blue-500 h-2 rounded-full" style="width: {{ $percentage }}%"></div>
+                            
+                            <!-- Payment Progress -->
+                            <div class="mt-4">
+                                <div class="flex justify-between text-xs text-gray-600 mb-1">
+                                    <span>Payment Progress</span>
+                                    <span>{{ $plan->payment_progress ?? 0 }}%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: {{ $plan->payment_progress ?? 0 }}%"></div>
+                                </div>
                             </div>
-                            <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>{{ number_format($percentage, 1) }}% of total</span>
-                                <span>{{ $plan->users_count ?? 0 }} contributors</span>
+                            
+                            <!-- Payment Breakdown -->
+                            <div class="grid grid-cols-2 gap-3 mt-4">
+                                <div class="bg-green-50 p-2 rounded-lg">
+                                    <div class="text-xs text-gray-500">Total Required</div>
+                                    <div class="font-semibold text-gray-800">₹{{ number_format($plan->total_required ?? 0, 2) }}</div>
+                                </div>
+                                <div class="bg-blue-50 p-2 rounded-lg">
+                                    <div class="text-xs text-gray-500">Amount Collected</div>
+                                    <div class="font-semibold text-green-600">₹{{ number_format($plan->paid_amount ?? 0, 2) }}</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Monthly Status -->
+                            <div class="mt-4 flex justify-between items-center text-sm">
+                                <span class="text-gray-600">This Month's Payments:</span>
+                                <div>
+                                    <span class="font-medium {{ ($plan->this_month_progress ?? 0) >= 100 ? 'text-green-600' : 'text-amber-600' }}">
+                                        ₹{{ number_format($plan->this_month_amount ?? 0, 2) }}
+                                    </span>
+                                    @if(($plan->this_month_progress ?? 0) >= 100)
+                                        <span class="ml-2 px-2 py-0.5 bg-green-100 text-green-800 text-xs rounded-full">Complete</span>
+                                    @elseif(($plan->this_month_progress ?? 0) > 0)
+                                        <span class="ml-2 px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-full">Partial</span>
+                                    @else
+                                        <span class="ml-2 px-2 py-0.5 bg-red-100 text-red-800 text-xs rounded-full">Pending</span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     @endforeach
@@ -186,21 +217,50 @@
     <!-- Top Contributors and Recent Transactions -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-            <h2 class="text-lg font-semibold mb-4">Top Contributors</h2>
+            <h2 class="text-lg font-semibold mb-4">Top Contributors & Payment Status</h2>
             @if($topContributors && $topContributors->count())
                 <div class="space-y-3">
                     @foreach($topContributors as $index => $user)
-                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                                    <span class="text-sm font-medium text-green-600">#{{ $index + 1 }}</span>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-green-600">#{{ $index + 1 }}</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-gray-800">{{ $user->name }}</div>
+                                        <div class="text-xs text-gray-500">{{ $user->email }}</div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <div class="font-medium text-gray-800">{{ $user->name }}</div>
-                                    <div class="text-xs text-gray-500">{{ $user->email }}</div>
+                                <div class="text-right">
+                                    <div class="font-bold text-green-600">₹{{ number_format($user->donations_sum_amount ?? 0, 2) }}</div>
+                                    @if(isset($user->plan) && isset($user->plan->pivot))
+                                        <div class="text-xs">
+                                            <span class="px-2 py-0.5 rounded-full {{ $user->plan->pivot->status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
+                                                {{ $user->plan->name ?? 'No Plan' }}
+                                            </span>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="font-bold text-green-600">₹{{ number_format($user->donations_sum_amount ?? 0, 2) }}</div>
+                            
+                            @if(isset($user->plan) && isset($user->plan->pivot) && $user->plan->pivot->status === 'active')
+                                <!-- Payment Progress Bar -->
+                                <div class="mt-1">
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5 mb-1">
+                                        @php
+                                            $paymentProgress = $user->plan->pivot->total_required > 0 
+                                                ? min(100, round(($user->plan->pivot->amount_paid / $user->plan->pivot->total_required) * 100)) 
+                                                : 0;
+                                        @endphp
+                                        <div class="bg-blue-600 h-1.5 rounded-full" style="width: {{ $paymentProgress }}%"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-500">
+                                        <span>{{ $paymentProgress }}% paid</span>
+                                        <span>₹{{ number_format($user->plan->pivot->amount_remaining ?? 0, 2) }} outstanding</span>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     @endforeach
                 </div>

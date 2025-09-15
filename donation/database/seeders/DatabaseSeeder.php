@@ -14,13 +14,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // Create admin user
         User::create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
             'password' => Hash::make('password'),
             'role' => 'admin',
         ]);
+
+        // Run the Plan seeder
+        $this->call(PlanSeeder::class);
+        
+        // Run the User-Plan seeder
+        $this->call(UserPlanSeeder::class);
+        
+        // Run the Donation seeder
+        $this->call(DonationSeeder::class);
     }
 }

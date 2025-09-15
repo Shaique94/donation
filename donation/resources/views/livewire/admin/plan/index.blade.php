@@ -23,6 +23,23 @@
                 @endif
                 <div class="text-gray-500 text-sm mb-3">{{ $plan->user_count }} Members</div>
                 
+                <!-- Plan Payment Progress -->
+                @if($plan->planUsers->count() > 0)
+                    <div class="mt-3 mb-3">
+                        <div class="flex justify-between text-xs text-gray-500 mb-1">
+                            <span>Payment Progress</span>
+                            <span>{{ $plan->payment_progress ?? 0 }}%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full" style="width: {{ $plan->payment_progress ?? 0 }}%"></div>
+                        </div>
+                        <div class="flex justify-between text-xs text-gray-500 mt-1">
+                            <span class="text-green-600 font-medium">₹{{ number_format($plan->total_paid ?? 0, 2) }} paid</span>
+                            <span class="text-amber-600 font-medium">₹{{ number_format($plan->total_outstanding ?? 0, 2) }} outstanding</span>
+                        </div>
+                    </div>
+                @endif
+                
                 <div class="flex justify-end space-x-2 mt-2">
                     <button wire:click="togglePlanStatus({{ $plan->id }})" 
                             class="{{ $plan->is_active ? 'text-red-600' : 'text-green-600' }} text-sm">
@@ -53,6 +70,8 @@
                         <th class="px-4 py-3">Amount</th>
                         <th class="px-4 py-3">Description</th>
                         <th class="px-4 py-3">Members</th>
+                        <th class="px-4 py-3">Payment Progress</th>
+                        <th class="px-4 py-3">Outstanding</th>
                         <th class="px-4 py-3">Status</th>
                         <th class="px-4 py-3 text-right">Actions</th>
                     </tr>
@@ -64,6 +83,13 @@
                             <td class="px-4 py-3 font-medium text-blue-600">₹{{ number_format($plan->amount, 2) }}</td>
                             <td class="px-4 py-3">{{ Str::limit($plan->description ?? '—', 50) }}</td>
                             <td class="px-4 py-3">{{ $plan->user_count }}</td>
+                            <td class="px-4 py-3">
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 w-32">
+                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: {{ $plan->payment_progress ?? 0 }}%"></div>
+                                </div>
+                                <span class="text-xs text-gray-500">{{ $plan->payment_progress ?? 0 }}%</span>
+                            </td>
+                            <td class="px-4 py-3 font-medium text-amber-600">₹{{ number_format($plan->total_outstanding ?? 0, 2) }}</td>
                             <td class="px-4 py-3">
                                 <span class="px-2 py-1 rounded-full text-xs {{ $plan->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                     {{ $plan->is_active ? 'Active' : 'Inactive' }}

@@ -47,7 +47,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Plan::class, 'plan_users')
                     ->using(PlanUser::class) // use custom pivot
-                    ->withPivot(['start_date', 'end_date', 'total_required', 'amount_paid', 'status'])
+                    ->withPivot(['start_date', 'end_date', 'total_required', 'amount_paid', 'amount_remaining', 'status'])
                     ->withTimestamps();
     }
     

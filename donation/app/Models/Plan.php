@@ -17,13 +17,13 @@ class Plan extends Model
     {
         return $this->belongsToMany(User::class, 'plan_users')
                     ->using(PlanUser::class)
-                    ->withPivot(['start_date', 'end_date', 'total_required', 'amount_paid', 'status'])
+                    ->withPivot(['start_date', 'end_date', 'total_required', 'amount_paid', 'amount_remaining', 'status'])
                     ->withTimestamps();
     }
 
     public function planUsers()
     {
-        return $this->hasMany(PlanUser::class);
+        return $this->hasMany(PlanUser::class, 'plan_id');
     }
 
     public function donations()
