@@ -43,6 +43,12 @@ class User extends Authenticatable
         ];
     }
 
-    
+    public function plans()
+    {
+        return $this->belongsToMany(Plan::class, 'plan_users')
+                    ->using(PlanUser::class) // use custom pivot
+                    ->withPivot(['start_date', 'end_date', 'total_required', 'amount_paid', 'status'])
+                    ->withTimestamps();
+    }
    
 }
