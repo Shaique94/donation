@@ -1,33 +1,73 @@
-        <div class="p-6">
-            <div class="bg-white rounded-lg shadow p-6">
-                <h1 class="text-2xl font-bold text-gray-800 mb-4">Dashboard</h1>
-                <p class="text-gray-600 mb-4">This is your main content area. The sidebar is always visible on desktop (lg screens and above) and hidden on mobile/tablet devices.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                        <h3 class="font-semibold text-blue-900 mb-2">Add User</h3>
-                        <a href="">
-                            Add User
-                        </a>
-                    </div>
-                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                        <h3 class="font-semibold text-green-900 mb-2">Card 2</h3>
-                        <p class="text-green-700">Sample content for demonstration</p>
-                    </div>
-                    <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                        <h3 class="font-semibold text-purple-900 mb-2">Card 3</h3>
-                        <p class="text-purple-700">Sample content for demonstration</p>
-                    </div>
-                </div>
-                
-                <div class="mt-8">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Responsive Behavior</h2>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• <strong>Desktop (lg+):</strong> Sidebar is always visible and fixed</li>
-                        <li>• <strong>Mobile/Tablet:</strong> Sidebar is hidden by default, can be toggled with the menu button</li>
-                        <li>• <strong>Header:</strong> Adjusts padding based on screen size to accommodate the sidebar</li>
-                        <li>• <strong>Main content:</strong> Automatically adjusts margin to account for the sidebar</li>
-                    </ul>
-                </div>
-            </div>
+<div class="container mx-auto p-6">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">Users & Plans</h1>
+        <button wire:click="openCreateUserModal"
+                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+            + Add User
+        </button>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-4 gap-4 mb-6">
+        <div class="bg-white p-4 rounded-2xl shadow-md text-center">
+            <p class="text-sm text-gray-500">Total Users</p>
+            <h3 class="text-xl font-bold">{{ $totalUsers }}</h3>
         </div>
+        <div class="bg-white p-4 rounded-2xl shadow-md text-center">
+            <p class="text-sm text-gray-500">Active Plans</p>
+            <h3 class="text-xl font-bold text-green-600">{{ $activePlans }}</h3>
+        </div>
+        <div class="bg-white p-4 rounded-2xl shadow-md text-center">
+            <p class="text-sm text-gray-500">Expired Plans</p>
+            <h3 class="text-xl font-bold text-red-600">{{ $expiredPlans }}</h3>
+        </div>
+        <div class="bg-white p-4 rounded-2xl shadow-md text-center">
+            <p class="text-sm text-gray-500">Revenue</p>
+            <h3 class="text-xl font-bold">₹{{ number_format($revenue, 2) }}</h3>
+        </div>
+    </div>
+
+    <!-- Users Table -->
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+        <table class="min-w-full table-auto">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-4 py-3 text-left">Name</th>
+                    <th class="px-4 py-3 text-left">Email</th>
+                    <th class="px-4 py-3 text-left">Role</th>
+                    <th class="px-4 py-3 text-left">Plan</th>
+                    <th class="px-4 py-3 text-left">Status</th>
+                    <th class="px-4 py-3 text-left">Start</th>
+                    <th class="px-4 py-3 text-left">End</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($users as $user)
+                @php
+                    $plan = $user->plans->first();
+                @endphp
+                <tr class="border-b">
+                    <td class="px-4 py-3">{{ $user->name }}</td>
+                    <td class="px-4 py-3">{{ $user->email }}</td>
+                    <td class="px-4 py-3">{{ ucfirst($user->role) }}</td>
+                    <td class="px-4 py-3">{{ $plan?->name ?? '—' }}</td>
+                    <td class="px-4 py-3">
+                        @if($plan?->pivot->status === 'active')
+                            <span class="text-green-600 font-medium">Active</span>
+                        @elseif($plan)
+                            <span class="text-red-600 font-medium">Expired</span>
+                        @else
+                            —
+                        @endif
+                    </td>
+                    <td class="px-4 py-3">{{ $plan?->pivot->start_date }}</td>
+                    <td class="px-4 py-3">{{ $plan?->pivot->end_date ?? '—' }}</td>
+                    
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+ 
+</div>
