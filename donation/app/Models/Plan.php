@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plan extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'description',
+        'amount',
+        'is_active'
+    ];
 
     public function users()
     {
@@ -24,5 +29,11 @@ class Plan extends Model
     public function donations()
     {
         return $this->hasMany(Donation::class);
+    }
+    
+    // Get count of users on this plan
+    public function getUserCountAttribute()
+    {
+        return $this->users()->count();
     }
 }

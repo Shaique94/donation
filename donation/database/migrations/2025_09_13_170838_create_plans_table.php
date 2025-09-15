@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->decimal('amount_required', 12, 2);
-            $table->integer('duration_months')->nullable();
+            $table->decimal('amount', 12, 2);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

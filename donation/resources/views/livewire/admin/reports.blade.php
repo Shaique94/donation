@@ -1,6 +1,6 @@
 <div class="container mx-auto p-6">
     <!-- Header with decorative elements -->
-    <div class="relative mb-12 pb-4 border-b border-gray-200">
+    <div class="relative mb-8 pb-4 border-b border-gray-200">
         <h1 class="text-3xl font-bold text-gray-800 flex items-center">
             <svg class="w-8 h-8 mr-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z"/>
@@ -35,570 +35,257 @@
         </div>
     </div>
 
-    <!-- Financial Highlights Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl shadow-md border border-green-200">
-            <div class="flex justify-between items-start">
-                <div>
-                    <h3 class="text-gray-600 font-medium">Total Donations</h3>
-                    <p class="text-3xl font-bold text-green-600 mt-1">₹9,75,000</p>
-                    <div class="flex items-center mt-2 text-green-700">
-                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"/>
-                        </svg>
-                        <span class="text-sm">+14.2% vs last year</span>
-                    </div>
-                </div>
-                <div class="p-3 bg-white bg-opacity-80 rounded-full">
-                    <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                    <div class="h-full bg-green-500 rounded-full" style="width: 85%"></div>
-                </div>
-                <div class="flex justify-between text-xs text-gray-500 mt-1">
-                    <span>Target: ₹12,00,000</span>
-                    <span>85% complete</span>
-                </div>
-            </div>
+    <!-- Financial Highlights -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <p class="text-sm text-gray-500">Total Donations</p>
+            <div class="mt-2 text-2xl font-semibold text-green-600">₹{{ number_format($totalDonations ?? 0, 2) }}</div>
+            <p class="text-xs text-gray-500 mt-2">Year-to-date donations</p>
         </div>
-        
-        <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-2xl shadow-md border border-red-200">
-            <div class="flex justify-between items-start">
-                <div>
-                    <h3 class="text-gray-600 font-medium">Total Expenses</h3>
-                    <p class="text-3xl font-bold text-red-600 mt-1">₹6,23,500</p>
-                    <div class="flex items-center mt-2 text-red-700">
-                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M12 13a1 1 0 100 2h5a1 1 0 001-1V9a1 1 0 10-2 0v2.586l-4.293-4.293a1 1 0 00-1.414 0L8 9.586 3.707 5.293a1 1 0 00-1.414 1.414l5 5a1 1 0 001.414 0L11 9.414 14.586 12H12z" clip-rule="evenodd"/>
-                        </svg>
-                        <span class="text-sm">+8.7% vs last year</span>
-                    </div>
-                </div>
-                <div class="p-3 bg-white bg-opacity-80 rounded-full">
-                    <svg class="w-8 h-8 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                    <div class="h-full bg-red-500 rounded-full" style="width: 62%"></div>
-                </div>
-                <div class="flex justify-between text-xs text-gray-500 mt-1">
-                    <span>Budget: ₹10,00,000</span>
-                    <span>62% utilized</span>
-                </div>
-            </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <p class="text-sm text-gray-500">Total Expenses</p>
+            <div class="mt-2 text-2xl font-semibold text-red-600">₹{{ number_format($totalExpenses ?? 0, 2) }}</div>
+            <p class="text-xs text-gray-500 mt-2">Year-to-date expenses</p>
         </div>
-        
-        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl shadow-md border border-blue-200">
-            <div class="flex justify-between items-start">
-                <div>
-                    <h3 class="text-gray-600 font-medium">Net Balance</h3>
-                    <p class="text-3xl font-bold text-blue-600 mt-1">₹3,51,500</p>
-                    <div class="flex items-center mt-2 text-blue-700">
-                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"/>
-                        </svg>
-                        <span class="text-sm">+21.3% vs last year</span>
-                    </div>
-                </div>
-                <div class="p-3 bg-white bg-opacity-80 rounded-full">
-                    <svg class="w-8 h-8 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-14a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 7.586V4z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                    <div class="h-full bg-blue-500 rounded-full" style="width: 35%"></div>
-                </div>
-                <div class="flex justify-between text-xs text-gray-500 mt-1">
-                    <span>Target Reserve: ₹10,00,000</span>
-                    <span>35% achieved</span>
-                </div>
-            </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <p class="text-sm text-gray-500">Net Balance</p>
+            <div class="mt-2 text-2xl font-semibold {{ ($netBalance ?? 0) >= 0 ? 'text-green-600' : 'text-red-600' }}">₹{{ number_format($netBalance ?? 0, 2) }}</div>
+            <p class="text-xs text-gray-500 mt-2">Donations minus expenses</p>
         </div>
     </div>
-
-    <!-- Report Generator Section -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-            <div class="flex items-center mb-4">
-                <div class="p-2 bg-green-100 rounded-lg mr-3">
-                    <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm4-1a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm2-5a1 1 0 00-1 1v3a1 1 0 102 0V7a1 1 0 00-1-1z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-800">Donation Reports</h3>
-            </div>
-            <p class="text-gray-600 mb-5">Generate comprehensive reports on donation analytics by time period, plan category, and member contributions.</p>
-            
-            <div class="space-y-3 mb-6">
-                <div class="flex items-center">
-                    <input id="donation_monthly" type="radio" name="donation_report_type" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
-                    <label for="donation_monthly" class="ml-2 block text-sm text-gray-700">Monthly Analysis</label>
-                </div>
-                <div class="flex items-center">
-                    <input id="donation_plan" type="radio" name="donation_report_type" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded" checked>
-                    <label for="donation_plan" class="ml-2 block text-sm text-gray-700">Plan Distribution</label>
-                </div>
-                <div class="flex items-center">
-                    <input id="donation_member" type="radio" name="donation_report_type" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
-                    <label for="donation_member" class="ml-2 block text-sm text-gray-700">Member Contributions</label>
-                </div>
-            </div>
-            
-            <div class="flex flex-wrap space-x-2">
-                <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1z" clip-rule="evenodd"/>
-                        <path fill-rule="evenodd" d="M10.293 11.293a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 13.414V19a1 1 0 11-2 0v-5.586l-3.293 3.293a1 1 0 01-1.414-1.414l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    Generate Report
-                </button>
-                <div class="dropdown inline-block relative">
-                    <button class="border border-green-600 text-green-600 px-4 py-2 rounded-lg hover:bg-green-50 transition flex items-center">
-                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                        Export
-                        <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-            <div class="flex items-center mb-4">
-                <div class="p-2 bg-red-100 rounded-lg mr-3">
-                    <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-800">Expense Reports</h3>
-            </div>
-            <p class="text-gray-600 mb-5">Track and analyze organizational expenses across different categories, time periods, and approval status.</p>
-            
-            <div class="space-y-3 mb-6">
-                <div class="flex items-center">
-                    <input id="expense_category" type="radio" name="expense_report_type" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded" checked>
-                    <label for="expense_category" class="ml-2 block text-sm text-gray-700">Category Analysis</label>
-                </div>
-                <div class="flex items-center">
-                    <input id="expense_trend" type="radio" name="expense_report_type" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
-                    <label for="expense_trend" class="ml-2 block text-sm text-gray-700">Monthly Trend</label>
-                </div>
-                <div class="flex items-center">
-                    <input id="expense_approval" type="radio" name="expense_report_type" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
-                    <label for="expense_approval" class="ml-2 block text-sm text-gray-700">Approval Status</label>
-                </div>
-            </div>
-            
-            <div class="flex flex-wrap space-x-2">
-                <button class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1z" clip-rule="evenodd"/>
-                        <path fill-rule="evenodd" d="M10.293 11.293a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 13.414V19a1 1 0 11-2 0v-5.586l-3.293 3.293a1 1 0 01-1.414-1.414l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    Generate Report
-                </button>
-                <div class="dropdown inline-block relative">
-                    <button class="border border-red-600 text-red-600 px-4 py-2 rounded-lg hover:bg-red-50 transition flex items-center">
-                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                        Export
-                        <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-            <div class="flex items-center mb-4">
-                <div class="p-2 bg-blue-100 rounded-lg mr-3">
-                    <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M3 3a1 1 0 000 2h14a1 1 0 100-2H3zm0 6a1 1 0 000 2h10a1 1 0 100-2H3zm0 6a1 1 0 100 2h5a1 1 0 000-2H3z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-800">Financial Reports</h3>
-            </div>
-            <p class="text-gray-600 mb-5">Get comprehensive financial statements including balance sheets, income statements, and cash flow analyses.</p>
-            
-            <div class="space-y-3 mb-6">
-                <div class="flex items-center">
-                    <input id="financial_summary" type="radio" name="financial_report_type" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" checked>
-                    <label for="financial_summary" class="ml-2 block text-sm text-gray-700">Summary Statement</label>
-                </div>
-                <div class="flex items-center">
-                    <input id="financial_income" type="radio" name="financial_report_type" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                    <label for="financial_income" class="ml-2 block text-sm text-gray-700">Income Statement</label>
-                </div>
-                <div class="flex items-center">
-                    <input id="financial_cash" type="radio" name="financial_report_type" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                    <label for="financial_cash" class="ml-2 block text-sm text-gray-700">Cash Flow Analysis</label>
-                </div>
-            </div>
-            
-            <div class="flex flex-wrap space-x-2">
-                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1z" clip-rule="evenodd"/>
-                        <path fill-rule="evenodd" d="M10.293 11.293a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 13.414V19a1 1 0 11-2 0v-5.586l-3.293 3.293a1 1 0 01-1.414-1.414l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    Generate Report
-                </button>
-                <div class="dropdown inline-block relative">
-                    <button class="border border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition flex items-center">
-                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                        Export
-                        <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Donation & Expense Chart -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+    <!-- Charts & Reports Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         <!-- Monthly Donation Trends -->
-        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-lg font-semibold text-gray-800">Monthly Donation Trends</h2>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 col-span-2">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">Monthly Donation Trends</h2>
                 <div class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded flex items-center">
                     <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"/>
                     </svg>
-                    14.2% growth
+                    Year: {{ date('Y') }}
                 </div>
             </div>
-            
-            <div class="relative h-60">
-                <!-- This would typically be a chart - I'm showing a placeholder with bars -->
-                <div class="absolute bottom-0 left-0 right-0 flex items-end justify-between h-48 px-2">
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 bg-green-500 rounded-t-md mb-1" style="height: 30%"></div>
-                        <span class="text-xs text-gray-500">Jan</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 bg-green-500 rounded-t-md mb-1" style="height: 45%"></div>
-                        <span class="text-xs text-gray-500">Feb</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 bg-green-500 rounded-t-md mb-1" style="height: 65%"></div>
-                        <span class="text-xs text-gray-500">Mar</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 bg-green-500 rounded-t-md mb-1" style="height: 40%"></div>
-                        <span class="text-xs text-gray-500">Apr</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 bg-green-500 rounded-t-md mb-1" style="height: 80%"></div>
-                        <span class="text-xs text-gray-500">May</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 bg-green-500 rounded-t-md mb-1" style="height: 60%"></div>
-                        <span class="text-xs text-gray-500">Jun</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 bg-green-500 rounded-t-md mb-1" style="height: 75%"></div>
-                        <span class="text-xs text-gray-500">Jul</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 bg-green-500 rounded-t-md mb-1" style="height: 90%"></div>
-                        <span class="text-xs text-gray-500">Aug</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-10 bg-green-500 rounded-t-md mb-1" style="height: 85%"></div>
-                        <span class="text-xs text-gray-500">Sep</span>
-                    </div>
+            @if($monthlyDonationTrends && $monthlyDonationTrends->count())
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead>
+                            <tr class="text-gray-500 border-b">
+                                <th class="py-2 px-3 font-medium">Month</th>
+                                <th class="py-2 px-3 text-right font-medium">Donation Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($monthlyDonationTrends as $month => $total)
+                                <tr class="border-b border-gray-50 hover:bg-gray-50">
+                                    <td class="py-3 px-3 text-gray-700">{{ $month }}</td>
+                                    <td class="py-3 px-3 text-right font-semibold text-green-600">₹{{ number_format($total, 2) }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-                
-                <!-- Horizontal grid lines -->
-                <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
-                    <div class="border-b border-gray-100 flex justify-between">
-                        <span class="text-xs text-gray-400">₹100K</span>
-                        <span class="text-xs text-gray-400 invisible">-</span>
-                    </div>
-                    <div class="border-b border-gray-100 flex justify-between">
-                        <span class="text-xs text-gray-400">₹75K</span>
-                        <span class="text-xs text-gray-400 invisible">-</span>
-                    </div>
-                    <div class="border-b border-gray-100 flex justify-between">
-                        <span class="text-xs text-gray-400">₹50K</span>
-                        <span class="text-xs text-gray-400 invisible">-</span>
-                    </div>
-                    <div class="border-b border-gray-100 flex justify-between">
-                        <span class="text-xs text-gray-400">₹25K</span>
-                        <span class="text-xs text-gray-400 invisible">-</span>
-                    </div>
-                    <div class="border-b border-gray-100 flex justify-between">
-                        <span class="text-xs text-gray-400">₹0</span>
-                        <span class="text-xs text-gray-400 invisible">-</span>
-                    </div>
+            @else
+                <div class="text-center py-8 text-gray-500">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <p>No donation trend data available for this year.</p>
                 </div>
-            </div>
+            @endif
         </div>
-        
+
         <!-- Expense by Category -->
-        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-lg font-semibold text-gray-800">Expense by Category</h2>
-                <select class="text-sm border-gray-300 rounded-md">
-                    <option>Last 12 Months</option>
-                    <option>Last 6 Months</option>
-                    <option>This Year</option>
-                </select>
-            </div>
-            
-            <!-- Placeholder for a pie/donut chart -->
-            <div class="flex items-center justify-center">
-                <div class="relative w-48 h-48">
-                    <div class="absolute inset-0 rounded-full border-8 border-red-500" style="clip: rect(0, 48px, 96px, 0); transform: rotate(0deg);"></div>
-                    <div class="absolute inset-0 rounded-full border-8 border-blue-500" style="clip: rect(0, 96px, 96px, 48px); transform: rotate(0deg);"></div>
-                    <div class="absolute inset-0 rounded-full border-8 border-yellow-500" style="clip: rect(48px, 96px, 96px, 0); transform: rotate(0deg);"></div>
-                    <div class="absolute inset-0 rounded-full border-8 border-green-500" style="clip: rect(48px, 48px, 96px, 0); transform: rotate(0deg);"></div>
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="bg-white rounded-full w-32 h-32"></div>
-                    </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <h2 class="text-lg font-semibold mb-4">Expenses by Category</h2>
+            @if($expenseByCategory && $expenseByCategory->count())
+                <div class="space-y-3">
+                    @foreach($expenseByCategory as $category => $total)
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700 font-medium">{{ $category }}</span>
+                            <span class="font-semibold text-red-600">₹{{ number_format($total, 2) }}</span>
+                        </div>
+                    @endforeach
                 </div>
-                
-                <div class="ml-8 space-y-3">
-                    <div class="flex items-center">
-                        <span class="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
-                        <span class="text-sm text-gray-600">Events (35%)</span>
-                    </div>
-                    <div class="flex items-center">
-                        <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
-                        <span class="text-sm text-gray-600">Maintenance (25%)</span>
-                    </div>
-                    <div class="flex items-center">
-                        <span class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
-                        <span class="text-sm text-gray-600">Utilities (20%)</span>
-                    </div>
-                    <div class="flex items-center">
-                        <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
-                        <span class="text-sm text-gray-600">Charity (20%)</span>
-                    </div>
+            @else
+                <div class="text-center py-8 text-gray-500">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                    </svg>
+                    <p>No expense data available.</p>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
-    
+
     <!-- Plan Distribution & Member Stats -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <!-- Plan Distribution -->
-        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 col-span-2">
-            <h2 class="text-lg font-semibold text-gray-800 mb-6">Plan Distribution</h2>
-            
-            <div class="space-y-6">
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 bg-amber-500 rounded-full mr-2"></div>
-                            <span class="text-sm font-medium">Basic Plan - ₹3,000</span>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 col-span-2">
+            <h2 class="text-lg font-semibold mb-6">Plan Distribution</h2>
+            @if($planDistribution && $planDistribution->count())
+                <div class="space-y-4">
+                    @foreach($planDistribution as $plan)
+                        <div class="border border-gray-100 rounded-lg p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <div class="font-semibold text-gray-800">{{ $plan->name }}</div>
+                                    <div class="text-sm text-gray-500">₹{{ number_format($plan->amount ?? 0, 2) }} • {{ $plan->users_count ?? 0 }} members</div>
+                                </div>
+                                <div class="text-lg font-bold text-blue-600">₹{{ number_format($plan->donations_sum_amount ?? 0, 2) }}</div>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                @php
+                                    $percentage = $planDistribution->sum('donations_sum_amount') > 0 
+                                        ? ($plan->donations_sum_amount / $planDistribution->sum('donations_sum_amount')) * 100 
+                                        : 0;
+                                @endphp
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: {{ $percentage }}%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>{{ number_format($percentage, 1) }}% of total</span>
+                                <span>{{ $plan->users_count ?? 0 }} contributors</span>
+                            </div>
                         </div>
-                        <span class="text-sm font-medium">65 members</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="bg-amber-500 h-2 rounded-full" style="width: 45%"></div>
-                    </div>
-                    <div class="flex justify-between text-xs text-gray-500 mt-1">
-                        <span>₹1,95,000 collected</span>
-                        <span>45% of members</span>
-                    </div>
+                    @endforeach
                 </div>
-                
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-                            <span class="text-sm font-medium">Standard Plan - ₹4,000</span>
-                        </div>
-                        <span class="text-sm font-medium">48 members</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="bg-blue-500 h-2 rounded-full" style="width: 32%"></div>
-                    </div>
-                    <div class="flex justify-between text-xs text-gray-500 mt-1">
-                        <span>₹1,92,000 collected</span>
-                        <span>32% of members</span>
-                    </div>
+            @else
+                <div class="text-center py-8 text-gray-500">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <p>No plans found.</p>
                 </div>
-                
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
-                            <span class="text-sm font-medium">Premium Plan - ₹5,000</span>
-                        </div>
-                        <span class="text-sm font-medium">34 members</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2">
-                        <div class="bg-purple-500 h-2 rounded-full" style="width: 23%"></div>
-                    </div>
-                    <div class="flex justify-between text-xs text-gray-500 mt-1">
-                        <span>₹1,70,000 collected</span>
-                        <span>23% of members</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flex justify-center mt-6">
-                <div class="inline-flex items-center bg-gray-100 rounded-lg p-1">
-                    <button class="px-4 py-1.5 text-sm font-medium rounded-md bg-white shadow">This Year</button>
-                    <button class="px-4 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-700">Last Year</button>
-                    <button class="px-4 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-700">All Time</button>
-                </div>
-            </div>
+            @endif
         </div>
-        
-        <!-- Member Statistics -->
-        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-            <h2 class="text-lg font-semibold text-gray-800 mb-4">Member Statistics</h2>
-            
-            <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="bg-gray-50 p-3 rounded-lg text-center">
-                    <p class="text-gray-500 text-xs">Total Members</p>
-                    <p class="text-xl font-bold text-gray-800">147</p>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <h2 class="text-lg font-semibold mb-4">Member Statistics</h2>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="text-center p-3 bg-blue-50 rounded-lg">
+                    <div class="text-2xl font-bold text-blue-600">{{ $totalMembers ?? 0 }}</div>
+                    <div class="text-xs text-gray-500">Total Members</div>
                 </div>
-                <div class="bg-gray-50 p-3 rounded-lg text-center">
-                    <p class="text-gray-500 text-xs">Active Plans</p>
-                    <p class="text-xl font-bold text-green-600">124</p>
+                <div class="text-center p-3 bg-green-50 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600">{{ $activePlans ?? 0 }}</div>
+                    <div class="text-xs text-gray-500">Active Plans</div>
                 </div>
-                <div class="bg-gray-50 p-3 rounded-lg text-center">
-                    <p class="text-gray-500 text-xs">Expired Plans</p>
-                    <p class="text-xl font-bold text-red-600">23</p>
+                <div class="text-center p-3 bg-red-50 rounded-lg">
+                    <div class="text-2xl font-bold text-red-600">{{ $expiredPlans ?? 0 }}</div>
+                    <div class="text-xs text-gray-500">Expired Plans</div>
                 </div>
-                <div class="bg-gray-50 p-3 rounded-lg text-center">
-                    <p class="text-gray-500 text-xs">Renewal Rate</p>
-                    <p class="text-xl font-bold text-blue-600">84%</p>
+                <div class="text-center p-3 bg-purple-50 rounded-lg">
+                    <div class="text-2xl font-bold text-purple-600">{{ $renewalRate ?? 0 }}%</div>
+                    <div class="text-xs text-gray-500">Renewal Rate</div>
                 </div>
-            </div>
-            
-            <div class="border-t pt-4">
-                <h3 class="text-sm font-medium text-gray-700 mb-3">Top Contributors</h3>
-                <ul class="space-y-2">
-                    <li class="flex justify-between items-center">
-                        <div class="flex items-center">
-                            <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs font-medium text-gray-700 mr-2">A</div>
-                            <span class="text-sm">Anand Sharma</span>
-                        </div>
-                        <span class="text-sm font-medium">₹12,000</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <div class="flex items-center">
-                            <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs font-medium text-gray-700 mr-2">R</div>
-                            <span class="text-sm">Rajesh Kumar</span>
-                        </div>
-                        <span class="text-sm font-medium">₹10,000</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <div class="flex items-center">
-                            <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs font-medium text-gray-700 mr-2">P</div>
-                            <span class="text-sm">Priya Patel</span>
-                        </div>
-                        <span class="text-sm font-medium">₹8,500</span>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
-    
-    <!-- Recent Transactions -->
-    <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="text-lg font-semibold text-gray-800">Recent Transactions</h2>
-            <button class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
-                View All
-                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                </svg>
-            </button>
+
+    <!-- Top Contributors and Recent Transactions -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <h2 class="text-lg font-semibold mb-4">Top Contributors</h2>
+            @if($topContributors && $topContributors->count())
+                <div class="space-y-3">
+                    @foreach($topContributors as $index => $user)
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                    <span class="text-sm font-medium text-green-600">#{{ $index + 1 }}</span>
+                                </div>
+                                <div>
+                                    <div class="font-medium text-gray-800">{{ $user->name }}</div>
+                                    <div class="text-xs text-gray-500">{{ $user->email }}</div>
+                                </div>
+                            </div>
+                            <div class="font-bold text-green-600">₹{{ number_format($user->donations_sum_amount ?? 0, 2) }}</div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center py-8 text-gray-500">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+                    </svg>
+                    <p>No contributors yet.</p>
+                </div>
+            @endif
         </div>
-        
-        <div class="overflow-x-auto">
-            <table class="min-w-full table-auto">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    <tr>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">15 Sep, 2025</td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">Donation from Anil Kapoor</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Income</span>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-green-600 font-medium">+₹5,000</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Completed</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">14 Sep, 2025</td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">Event Venue Rental</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs bg-red-100 text-red-800 rounded-full">Expense</span>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-red-600 font-medium">-₹15,000</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Approved</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">12 Sep, 2025</td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">Monthly Plan Payment - Sunita Sharma</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Income</span>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-green-600 font-medium">+₹4,000</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Completed</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">10 Sep, 2025</td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">Utility Bills Payment</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs bg-red-100 text-red-800 rounded-full">Expense</span>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-red-600 font-medium">-₹3,500</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Approved</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">8 Sep, 2025</td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">Donation from Vijay Mehta</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Income</span>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-green-600 font-medium">+₹3,000</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                            <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Completed</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">Recent Transactions</h2>
+                <button class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
+                    View All
+                    <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+            @if($recentTransactions && $recentTransactions->count())
+                <div class="space-y-3">
+                    @foreach($recentTransactions as $tx)
+                        <div class="flex justify-between items-center p-3 border border-gray-100 rounded-lg">
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <div class="font-medium text-gray-800 text-sm">{{ $tx->description ?? ($tx->notes ?? 'Transaction') }}</div>
+                                        <div class="text-xs text-gray-500">{{ \Carbon\Carbon::parse($tx->transaction_date)->format('d M, Y') }}</div>
+                                    </div>
+                                    <div class="text-right">
+                                        @if(isset($tx->amount))
+                                            <div class="font-semibold {{ $tx->type === 'donation' ? 'text-green-600' : 'text-red-600' }}">
+                                                {{ $tx->type === 'donation' ? '+' : '-' }}₹{{ number_format($tx->amount, 2) }}
+                                            </div>
+                                        @else
+                                            <div class="text-gray-400">—</div>
+                                        @endif
+                                        <div class="text-xs">
+                                            <span class="px-2 py-1 rounded-full text-xs {{ $tx->type === 'donation' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                                {{ ucfirst($tx->type) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center py-8 text-gray-500">
+                    <svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                    </svg>
+                    <p>No recent transactions.</p>
+                </div>
+            @endif
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <h2 class="text-lg font-semibold mb-4">Quick Report Actions</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="flex items-center justify-center p-4 border border-blue-200 rounded-lg hover:bg-blue-50 transition">
+                <svg class="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-blue-600 font-medium">Export Financial Report</span>
+            </button>
+            <button class="flex items-center justify-center p-4 border border-green-200 rounded-lg hover:bg-green-50 transition">
+                <svg class="w-5 h-5 mr-2 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-green-600 font-medium">Download Member List</span>
+            </button>
+            <button class="flex items-center justify-center p-4 border border-purple-200 rounded-lg hover:bg-purple-50 transition">
+                <svg class="w-5 h-5 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-purple-600 font-medium">Generate Annual Report</span>
+            </button>
         </div>
     </div>
 </div>

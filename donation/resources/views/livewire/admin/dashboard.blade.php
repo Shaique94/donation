@@ -196,28 +196,26 @@
     <!-- Plan Distribution Chart -->
     <div class="bg-white rounded-2xl shadow-md overflow-hidden mb-6 p-4 sm:p-6">
         <h2 class="text-lg font-semibold text-gray-700 mb-4">Plan Distribution</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="flex flex-col items-center justify-center p-4 border rounded-xl">
-                <div class="text-2xl sm:text-3xl font-bold text-amber-500">₹3,000</div>
-                <div class="text-sm text-gray-500 mt-2">Basic Plan</div>
-                <div class="font-semibold mt-1">{{ $users->filter(function($user) { 
-                    return $user->plans->first()?->amount == 3000; 
-                })->count() }} Members</div>
-            </div>
-            <div class="flex flex-col items-center justify-center p-4 border rounded-xl">
-                <div class="text-2xl sm:text-3xl font-bold text-blue-500">₹4,000</div>
-                <div class="text-sm text-gray-500 mt-2">Standard Plan</div>
-                <div class="font-semibold mt-1">{{ $users->filter(function($user) { 
-                    return $user->plans->first()?->amount == 4000; 
-                })->count() }} Members</div>
-            </div>
-            <div class="flex flex-col items-center justify-center p-4 border rounded-xl">
-                <div class="text-2xl sm:text-3xl font-bold text-purple-500">₹5,000</div>
-                <div class="text-sm text-gray-500 mt-2">Premium Plan</div>
-                <div class="font-semibold mt-1">{{ $users->filter(function($user) { 
-                    return $user->plans->first()?->amount == 5000; 
-                })->count() }} Members</div>
-            </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-{{ count($plans) }} gap-4">
+            @forelse($plans as $index => $plan)
+                @php
+                    // Assign different colors based on the plan index
+                    $colors = ['amber', 'blue', 'purple', 'green', 'indigo', 'rose'];
+                    $colorIndex = $index % count($colors);
+                    $colorClass = $colors[$colorIndex] . '-500';
+                @endphp
+                <div class="flex flex-col items-center justify-center p-4 border rounded-xl">
+                    <div class="text-2xl sm:text-3xl font-bold text-{{ $colorClass }}">₹{{ number_format($plan->amount, 0) }}</div>
+                    <div class="text-sm text-gray-500 mt-2">{{ $plan->name }}</div>
+                    <div class="font-semibold mt-1">{{ $users->filter(function($user) use($plan) { 
+                        return $user->plans->first()?->id == $plan->id; 
+                    })->count() }} Members</div>
+                </div>
+            @empty
+                <div class="col-span-full text-center py-6 text-gray-500">
+                    No plans available
+                </div>
+            @endforelse
         </div>
     </div>
 </div>

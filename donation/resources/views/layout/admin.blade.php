@@ -45,14 +45,19 @@
 <div id="sidebar-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-40 lg:hidden hidden"></div>
 
 <!-- Sidebar -->
-<aside id="sidebar" class="fixed top-0 left-0 z-50 w-64 h-screen pt-16 bg-white border-r border-gray-200 lg:translate-x-0 -translate-x-full transition-transform duration-300 ease-in-out">
-    <div class="h-full px-4 py-6 overflow-y-auto">
+<aside id="sidebar" class="fixed top-0 left-0 z-50 w-64 h-screen pt-5 bg-[#fcf4e1] border-r border-gray-200 lg:translate-x-0 -translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="h-full px-4 overflow-y-auto">
         <!-- Close button for mobile -->
         <button id="sidebar-close" class="lg:hidden absolute top-4 right-4 text-gray-500 hover:text-gray-700">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
             </svg>
         </button>
+        
+        <!-- Logo -->
+        <div class="flex flex-col items-center mb-6">
+            <img src="{{asset("images/logo.png")}}" alt="Bazm-e-Haidri" class="w-40 h-auto mb-2">
+        </div>
 
         <ul class="space-y-2 font-medium">
             <li>
@@ -129,6 +134,12 @@
                 </form>
             </li>
         </ul>
+        
+        <!-- Powered by footer -->
+        <div class="mt-auto pt-6 text-center text-xs text-gray-500 ">
+            <p>Powered by</p>
+            <p class="font-semibold">Comestro Techlabs</p>
+        </div>
     </div>
 </aside>
 
