@@ -50,5 +50,10 @@ class User extends Authenticatable
                     ->withPivot(['start_date', 'end_date', 'total_required', 'amount_paid', 'status'])
                     ->withTimestamps();
     }
-   
+    
+    public function donations()
+    {
+        return $this->hasMany(\App\Models\Donation::class);
+    }
+
 }

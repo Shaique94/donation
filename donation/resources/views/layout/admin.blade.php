@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $title ?? 'Bajm Haidri' }}</title>
+    <title>{{ $title ?? 'Bazm-e-Haidri' }}</title>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     @livewireStyles
@@ -70,6 +70,38 @@
                         <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
                     </svg>
                     <span class="flex-1 ml-3 whitespace-nowrap">Plans</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.donations')}}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M4 4C4 2.89543 4.89543 2 6 2H14C15.1046 2 16 2.89543 16 4V16C16 17.1046 15.1046 18 14 18H6C4.89543 18 4 17.1046 4 16V4Z"/>
+                        <path d="M9 6H11V14H9V6Z"/>
+                        <path d="M7 9H13V11H7V9Z"/>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Donations</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.expenses')}}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M5 3C3.89543 3 3 3.89543 3 5V7C3 8.10457 3.89543 9 5 9H7C8.10457 9 9 8.10457 9 7V5C9 3.89543 8.10457 3 7 3H5Z"/>
+                        <path d="M5 11C3.89543 11 3 11.8954 3 13V15C3 16.1046 3.89543 17 5 17H7C8.10457 17 9 16.1046 9 15V13C9 11.8954 8.10457 11 7 11H5Z"/>
+                        <path d="M13 3C11.8954 3 11 3.89543 11 5V7C11 8.10457 11.8954 9 13 9H15C16.1046 9 17 8.10457 17 7V5C17 3.89543 16.1046 3 15 3H13Z"/>
+                        <path d="M13 11C11.8954 11 11 11.8954 11 13V15C11 16.1046 11.8954 17 13 17H15C16.1046 17 17 16.1046 17 15V13C17 11.8954 16.1046 11 15 11H13Z"/>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Expenses</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.reports')}}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                    <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M5 4C5 3.44772 5.44772 3 6 3H14C14.5523 3 15 3.44772 15 4V16C15 16.5523 14.5523 17 14 17H6C5.44772 17 5 16.5523 5 16V4Z"/>
+                        <path d="M7 7H13V8H7V7Z"/>
+                        <path d="M7 10H13V11H7V10Z"/>
+                        <path d="M7 13H11V14H7V13Z"/>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Reports</span>
                 </a>
             </li>
            

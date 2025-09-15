@@ -20,4 +20,9 @@ class Plan extends Model
     {
         return $this->hasMany(PlanUser::class);
     }
+
+    public function donations()
+    {
+        return $this->hasMany(Donation::class);
+    }
 }
